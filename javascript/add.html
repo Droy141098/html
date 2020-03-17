@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>JavaScript Operators</h2>
+
+    <div>
+        x: <input type="number" name="first" id="x1"> y: <input type="number" name="second" id="y1">
+        <button type="button" onclick="add()">ADD</button>
+        <h3 id="demo"></h3>
+    </div>
+
+    <div>
+        x: <input type="number" name="first" id="x2"> y: <input type="number" name="second" id="y2">
+        <button type="button" onclick="mul()">MULTIPLY</button>
+        <h3 id="demo1"></h3>
+    </div>
+
+    <div>
+        x: <input type="number" name="first" id="x3"> y: <input type="number" name="second" id="y3">
+        <button type="button" onclick="div()">DIVISION</button>
+        <h3 id="demo2"></h3>
+    </div>
+
+    <div>
+        x: <input type="number" name="first" id="x4"> y: <input type="number" name="second" id="y4">
+        <button type="button" onclick="sub()">SUBSTRACTION</button>
+        <h3 id="demo3"></h3>
+    </div>
+
+    <script>
+        function add() {
+            var x = document.getElementById('x1').value;
+            var y = document.getElementById('y1').value;
+            var z = parseInt(x) + parseInt(y);
+            document.getElementById("demo").innerHTML = z;
+            console.log("Answer=" + z)
+            document.getElementById('demo').innerText = z;
+        }
+
+        function mul() {
+            var x = document.getElementById('x2').value;
+            var y = document.getElementById('y2').value;
+            var z = parseInt(x) * parseInt(y);
+            document.getElementById("demo1").innerHTML = z;
+            console.log("Answer=" + z)
+            document.getElementById('demo1').innerText = z;
+        }
+
+        function div() {
+            var x = document.getElementById('x3').value;
+            var y = document.getElementById('y3').value;
+            var z = parseInt(x) / parseInt(y);
+            document.getElementById("demo2").innerHTML = z;
+            console.log("Answer=" + z)
+            document.getElementById('demo2').innerText = z;
+        }
+
+        function sub() {
+            var x = document.getElementById('x4').value;
+            var y = document.getElementById('y4').value;
+            var z = parseInt(x) - parseInt(y);
+            document.getElementById("demo3").innerHTML = z;
+            console.log("Answer=" + z)
+                //document.getElementById('demo3').innerText = z;
+        }
+    </script>
+
+</body>
+
+</html>
