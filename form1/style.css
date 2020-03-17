@@ -1,0 +1,9 @@
+div {
+    margin-top: 250px;
+    margin-left: 750px;
+    text-align: center;
+    width: 350px;
+    border: 4px solid black;
+    border-radius: 2%;
+    background-color: azure;
+}
