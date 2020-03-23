@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>Triangle area</h2>
+
+    <div>
+        s1: <input type="number" name="first" id="x1"> s2: <input type="number" name="second" id="y1">s3: <input type="number" name="third" id="z1">
+        <button type="button" onclick="area()">Area</button>
+        <h3 id="demo"></h3>
+    </div>
+
+    <script>
+        function area() {
+            var side1 = document.getElementById('x1').value;
+            var side2 = document.getElementById('y1').value;
+            var side3 = document.getElementById('z1').value;
+            var perimeter = (parseInt(side1) + parseInt(side2) + parseInt(side3))/2;
+            var area =  Math.sqrt(perimeter*((perimeter-parseInt(side1))*(perimeter-parseInt(side2))*(perimeter-parseInt(side3))));
+
+            document.getElementById("demo").innerHTML = area;
+            console.log("Answer=" + area)
+            document.getElementById('demo').innerText = area;
+        }
+
+        
+    </script>
+
+</body>
+
+</html>
