@@ -1,0 +1,11 @@
+.zoom{
+    cursor:pointer;
+}
+.badge{
+    position: relative;
+    margin-left: -20px;
+}
+.zoom:hover {
+    transform: scale(0.96);
+    cursor: pointer;
+}
