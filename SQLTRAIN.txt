@@ -1,0 +1,248 @@
+MariaDB [(none)]> create database railways;
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| a                  |
+| abcd               |
+| classicmodels      |
+| com                |
+| companydb          |
+| cs192upsms         |
+| dipayan            |
+| ecommerce          |
+| fake               |
+| id7299117_mydb     |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| profile            |
+| question           |
+| railways           |
+| shopping           |
+| test               |
+| unleashe_hotel     |
++--------------------+
+21 rows in set (0.00 sec)
+
+MariaDB [(none)]> use railways;
+Database changed
+
+MariaDB [railways]> create table train(
+    -> tno int primary key,
+    -> tname varchar(255),
+    -> tsource varchar(255) NOT NULL,
+    -> tdestination varchar(255) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.25 sec)
+
+
+MariaDB [railways]> desc train;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| tno          | int(11)      | NO   | PRI | NULL    |       |
+| tname        | varchar(255) | YES  |     | NULL    |       |
+| tsource      | varchar(255) | NO   |     | NULL    |       |
+| tdestination | varchar(255) | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+
+MariaDB [railways]> create table schedule(
+    -> scode varchar(4) NOT NULL,
+    -> arrt varchar(255) NOt NULL,
+    -> tdept varchar(255) NOT NULL,
+    -> tno int,
+    -> foreign key(tno) references train(tno)
+    -> );
+	
+	
+MariaDB [railways]> desc schedule;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| scode | varchar(4)   | NO   |     | NULL    |       |
+| arrt  | varchar(255) | NO   |     | NULL    |       |
+| tdept | varchar(255) | NO   |     | NULL    |       |
+| tno   | int(11)      | YES  | MUL | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+MariaDB [railways]> insert into train
+    -> values(121,'Bonga Local','Sealdah','Bonga');
+Query OK, 1 row affected (0.09 sec)
+
+MariaDB [railways]> insert into train
+    -> values(131,'Dankuni Local','Sealdah','Dankuni');
+Query OK, 1 row affected (0.10 sec)
+
+MariaDB [railways]> insert into train
+    -> values(141,'Keora Local','Howrah','Bardhaman');
+Query OK, 1 row affected (0.11 sec)
+
+MariaDB [railways]> insert into train
+    -> values(151,'Ranaghat Local','Sealdah','Ranaghat');
+Query OK, 1 row affected (0.10 sec)
+
+MariaDB [railways]> insert into train
+    -> values(161,'Krishnanagar Local','Sealdah','Krishnanagar');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [railways]> select * from train;
++-----+--------------------+---------+--------------+
+| tno | tname              | tsource | tdestination |
++-----+--------------------+---------+--------------+
+| 121 | Bonga Local        | Sealdah | Bonga        |
+| 131 | Dankuni Local      | Sealdah | Dankuni      |
+| 141 | Keora Local        | Howrah  | Bardhaman    |
+| 151 | Ranaghat Local     | Sealdah | Ranaghat     |
+| 161 | Krishnanagar Local | Sealdah | Krishnanagar |
++-----+--------------------+---------+--------------+
+
+MariaDB [railways]> insert into schedule
+    -> values('SDH','07:10','07:15',121,'Sealdah');
+Query OK, 1 row affected (0.09 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('DUM','07:30','07:45',121,'Dumdum');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('DUR','08:00','08:05',121,'Durganagar');
+Query OK, 1 row affected (0.04 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('BAR','08:15','08:25',121,'Barasat');
+Query OK, 1 row affected (0.21 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('BON','09:00','09:30',121,'Banga');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('SDH','08:15','08:30',131,'Sealdah');
+Query OK, 1 row affected (0.08 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('DUM','08:40','08:45',131,'Dumdum');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('BRN','08:53','08:55',131,'Baranagar');
+Query OK, 1 row affected (0.07 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('DKAI','09:15','09:30',131,'Dankuni');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('HWH','23:30','2:30',141,'Howrah');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('BLY','03:10','3:30',141,'Bally');
+Query OK, 1 row affected (0.07 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('SDH','13:00','13:10',151,'Sealdah');
+Query OK, 1 row affected (0.08 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('BDHN','13:25','13:30',151,'Bidhannagar');
+Query OK, 1 row affected (0.07 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('DUM','13:40','13:45',151,'Dumdum');
+Query OK, 1 row affected (0.05 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('BRK','13:55','14:00',151,'Barrackpore');
+Query OK, 1 row affected (0.10 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('KAL','14:35','14:40',151,'Kalyani');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('RNG','15:00','15:10',151,'Ranaghat');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('SDH','10:00','10:10',161,'Sealdah');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('BDHN','10:15','10:20',161,'Bidhannagar');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('DUM','10:35','10:40',161,'Dumdum');
+Query OK, 1 row affected (0.09 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('BRK','10:55','11:00',161,'Barrackpore');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('KAL','11:15','11:30',161,'Kalyani');
+Query OK, 1 row affected (0.08 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('RNG','12:00','12:10',161,'Ranaghat');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [railways]> insert into schedule
+    -> values('KRS','12:35','12:40',161,'Krishnanagar');
+Query OK, 1 row affected (0.07 sec)
+
+MariaDB [railways]> select * from schedule;
++-------+-------+-------+------+--------------+
+| scode | arrt  | tdept | tno  | sname        |
++-------+-------+-------+------+--------------+
+| SDH   | 07:10 | 07:15 |  121 | Sealdah      |
+| DUM   | 07:30 | 07:45 |  121 | Dumdum       |
+| DUR   | 08:00 | 08:05 |  121 | Durganagar   |
+| BAR   | 08:15 | 08:25 |  121 | Barasat      |
+| BON   | 09:00 | 09:30 |  121 | Banga        |
+| SDH   | 08:15 | 08:30 |  131 | Sealdah      |
+| DUM   | 08:40 | 08:45 |  131 | Dumdum       |
+| BRN   | 08:53 | 08:55 |  131 | Baranagar    |
+| DKAI  | 09:15 | 09:30 |  131 | Dankuni      |
+| HWH   | 23:30 | 2:30  |  141 | Howrah       |
+| BLY   | 03:10 | 3:30  |  141 | Bally        |
+| SDH   | 13:00 | 13:10 |  151 | Sealdah      |
+| BDHN  | 13:25 | 13:30 |  151 | Bidhannagar  |
+| DUM   | 13:40 | 13:45 |  151 | Dumdum       |
+| BRK   | 13:55 | 14:00 |  151 | Barrackpore  |
+| KAL   | 14:35 | 14:40 |  151 | Kalyani      |
+| RNG   | 15:00 | 15:10 |  151 | Ranaghat     |
+| SDH   | 10:00 | 10:10 |  161 | Sealdah      |
+| BDHN  | 10:15 | 10:20 |  161 | Bidhannagar  |
+| D     | 10:35 | 10:40 |  161 | Dumdum       |
+| DUM   | 10:35 | 10:40 |  161 | Dumdum       |
+| BRK   | 10:55 | 11:00 |  161 | Barrackpore  |
+| KAL   | 11:15 | 11:30 |  161 | Kalyani      |
+| RNG   | 12:00 | 12:10 |  161 | Ranaghat     |
+| KRS   | 12:35 | 12:40 |  161 | Krishnanagar |
++-------+-------+-------+------+--------------+
+25 rows in set (0.00 sec)
+
+MariaDB [railways]> select tname,tsource,tdestination 
+		    from train 
+		    where tno in(  select distinct( t.tno) 
+		    from schedule t,schedule s 
+		    where t.tno=s.tno and t.sname="Sealdah" and s.sname="Dumdum");
+					
++--------------------+---------+--------------+
+| tname              | tsource | tdestination |
++--------------------+---------+--------------+
+| Bonga Local        | Sealdah | Bonga        |
+| Dankuni Local      | Sealdah | Dankuni      |
+| Ranaghat Local     | Sealdah | Ranaghat     |
+| Krishnanagar Local | Sealdah | Krishnanagar |
++--------------------+---------+--------------+
+4 rows in set (0.08 sec)
